@@ -2,6 +2,7 @@
 import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
 import { ref } from 'vue'
+import weddingConfig from '~/wedding.config'
 
 const currentSlide = ref(0)
 
@@ -24,27 +25,12 @@ const thumbnailsConfig = {
   gap: 10,
 }
 
-const images = [
-  'us1.webp',
-  'us2.webp',
-  'us3.webp',
-  'us4.webp',
-  'us5.webp',
-  'us6.webp',
-  // 'us7.webp',
-  'us8.webp',
-  'us9.webp',
-  'us10.webp',
-  'us11.webp',
-  'us12.webp',
-  'us13.webp',
-]
+const images = weddingConfig.images.carousel
 </script>
 
 <template>
   <Carousel id="gallery" v-bind="galleryConfig" v-model="currentSlide">
     <Slide v-for="image,index in images" :key="index">
-      <!-- <img :src="image.url" alt="Gallery Image" class="gallery-image" /> -->
        <NuxtImg :src="image" alt="Gallery Image" class="gallery-image" />
     </Slide>
   </Carousel>

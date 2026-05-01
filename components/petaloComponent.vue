@@ -8,7 +8,8 @@
           left: petalo.left + '%',
           animationDuration: petalo.duration + 's',
           animationDelay: petalo.delay + 's',
-          transform: `rotate(${petalo.rotation}deg)`
+          transform: `rotate(${petalo.rotation}deg)`,
+          backgroundImage: `url(${weddingConfig.images.petalo})`
         }"
       />
     </div>
@@ -16,6 +17,7 @@
   
   <script setup lang="ts">
   import { ref, onMounted } from 'vue'
+  import weddingConfig from '~/wedding.config'
   
   interface Petalo {
     left: number
@@ -31,10 +33,10 @@
   onMounted(() => {
     const total = window.innerWidth < 768 ? TOTAL_MOBILE : TOTAL_DESKTOP
     petalos.value = Array.from({ length: total }, () => ({
-      left: Math.random() * 100,       // posición horizontal (%)
-      duration: 6 + Math.random() * 5, // duración de la caída (6s a 11s)
-      delay: Math.random() * 5,        // retardo inicial
-      rotation: Math.random() * 360    // rotación inicial
+      left: Math.random() * 100,
+      duration: 6 + Math.random() * 5,
+      delay: Math.random() * 5,
+      rotation: Math.random() * 360
     }))
   })
   </script>
@@ -56,7 +58,6 @@
     top: -40px;
     width: 30px;
     height: 30px;
-    background-image: url('/petalo.webp');
     background-size: cover;
     background-repeat: no-repeat;
     opacity: 0.8;
@@ -76,4 +77,3 @@
     }
   }
   </style>
-  

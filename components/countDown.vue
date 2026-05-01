@@ -1,25 +1,25 @@
 <template>
     <div class="text-center text-white space-y-2 py-5 px-4 rounded-2xl backdrop-blur-sm bg-black/20">
       <h2 class="text-3xl font-bold font-dancing">
-        {{ isWeddingTime ? '🎉 ¡Es el gran día! ¡Felicidades! 💍' : 'Faltan:' }}
+        {{ isWeddingTime ? config.texts.countdown.celebration : config.texts.countdown.remaining }}
       </h2>
   
       <div v-if="!isWeddingTime" class="flex justify-center gap-6 text-2xl font-semibold">
         <div>
           <span class="block text-4xl">{{ countdown.days }}</span>
-          <span class="font-dancing">días</span>
+          <span class="font-dancing">{{ config.texts.countdown.days }}</span>
         </div>
         <div>
           <span class="block text-4xl">{{ countdown.hours }}</span>
-          <span class="font-dancing">horas</span>
+          <span class="font-dancing">{{ config.texts.countdown.hours }}</span>
         </div>
         <div>
           <span class="block text-4xl">{{ countdown.minutes }}</span>
-          <span class="font-dancing">min</span>
+          <span class="font-dancing">{{ config.texts.countdown.minutes }}</span>
         </div>
         <div>
           <span class="block text-4xl">{{ countdown.seconds }}</span>
-          <span class="font-dancing">seg</span>
+          <span class="font-dancing">{{ config.texts.countdown.seconds }}</span>
         </div>
       </div>
     </div>
@@ -27,9 +27,9 @@
   
   <script setup lang="ts">
   import { ref, onMounted, onUnmounted } from 'vue'
+  import config from '~/wedding.config'
   
-  // Fecha de la boda
-  const weddingDate = new Date('2026-10-04T13:00:00')
+  const weddingDate = new Date(config.date.weddingDate)
   
   const countdown = ref({
     days: '00',
@@ -73,4 +73,3 @@
     clearInterval(intervalId)
   })
   </script>
-  

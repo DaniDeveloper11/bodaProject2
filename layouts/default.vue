@@ -1,11 +1,9 @@
 <template>
   <div>
-    <!-- <h1 class="bg-red-500"> Holi</h1> -->
     <HeaderComponent></HeaderComponent>
 
     <main class="flex mx-auto lg:mx-0 2xl:mx-40 max-w-8xl px-4 sm:px-6 lg:px-8">
       <div class="flex-1 min-w-0 overflow-hidden">
-        <petaloComponent></petaloComponent>
         <slot />
 
 
@@ -20,7 +18,7 @@
     </main>
   <footer class="border-t border-gray-200 dark:border-white/10 mt-8">
     <div class="mx-auto max-w-7xl px-6 py-8 flex items-center justify-center lg:px-8">
-      <p class="text-center text-sm text-gray-500 dark:text-gray-400 font-poppins">&copy; 2025 Realizado por el Novio.</p>
+      <p class="text-center text-sm text-gray-500 dark:text-gray-400 font-poppins">{{ weddingConfig.texts.footer }}</p>
     </div>
   </footer>
 
@@ -32,6 +30,7 @@
 import { useGuestStore } from '@/stores/guest';
 const guestStore = useGuestStore()
 import { ref, onMounted, onUnmounted } from 'vue'
+import weddingConfig from '~/wedding.config'
 
 const showButton = ref(false)
 

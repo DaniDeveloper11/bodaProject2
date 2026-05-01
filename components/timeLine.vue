@@ -3,7 +3,7 @@
     <div class="relative">
       <div class="flex justify-items-start -ml-6">
         <NuxtImg
-        src="flowerCorner.webp"
+        :src="config.images.flowerCorner"
         class="size-48 -scale-y-100 -scale-x-100"
       ></NuxtImg>
       </div>
@@ -11,7 +11,7 @@
       <div class="-mt-14">
         <div class="mb-5">
           <h4 class="text-brand-sage font-dancing text-4xl md:text-5xl text-center">
-            Wedding Time Line
+            {{ config.texts.timeline.title }}
           </h4>
         </div>
 
@@ -70,125 +70,30 @@
       </div>
     </div>
     <div class="w-full flex justify-center items-center">
-      <NuxtImg src="foto3.webp" class="w-full h-full object-cover"></NuxtImg>
+      <NuxtImg :src="config.images.timelineBottom" class="w-full h-full object-cover"></NuxtImg>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ClockIcon,
-  EllipsisHorizontalIcon,
-  CheckIcon,
-  HandThumbUpIcon,
-  UserIcon,
-} from "@heroicons/vue/20/solid";
-const timeline = [
-  {
-    id: 0,
-    src: "traje-de-boda.webp",
-    content: "Applied to",
-    target: "Front End Developer",
-    href: "#",
-    date: "Sep 20",
-    datetime: "2020-09-20",
-    icon: UserIcon,
-    iconBackground: "bg-gray-400",
-    time: "08:00 AM",
-    title: "Getting Ready",
-  },
-  {
-    id: 1,
-    src: "iglesia.webp",
-    content: "Applied to",
-    target: "Front End Developer",
-    href: "#",
-    date: "Sep 20",
-    datetime: "2020-09-20",
-    icon: UserIcon,
-    iconBackground: "bg-gray-400",
-    time: "01:00 PM",
-    title: "Misa Religiosa",
-  },
-  // {
-  //   id: 2,
-  //   src: "anillos-de-boda.png",
-  //   content: "Advanced to phone screening by",
-  //   target: "Bethany Blake",
-  //   href: "#",
-  //   date: "Sep 22",
-  //   datetime: "2020-09-22",
-  //   icon: HandThumbUpIcon,
-  //   iconBackground: "bg-blue-500",
-  //   time: "10:00 AM",
-  //   title: "Boda Civil",
-  // },
-  {
-    id: 3,
-    src: "animar.webp",
-    content: "Completed phone screening with",
-    target: "Martha Gardner",
-    href: "#",
-    date: "Sep 28",
-    datetime: "2020-09-28",
-    icon: CheckIcon,
-    iconBackground: "bg-green-500",
-    time: "03:00 PM",
-    title: "Inicio de la recepción",
-  },
-  {
-    id: 4,
-    src: "banquete.webp",
-    content: "Advanced to interview by",
-    target: "Bethany Blake",
-    href: "#",
-    date: "Sep 30",
-    datetime: "2020-09-30",
-    icon: HandThumbUpIcon,
-    iconBackground: "bg-blue-500",
-    time: "04:00 PM",
-    title: "Banquete",
-  },
-  {
-    id: 5,
-    src: "baile.webp",
-    content: "Completed interview with",
-    target: "Katherine Snyder",
-    href: "#",
-    date: "Oct 4",
-    datetime: "2020-10-04",
-    icon: CheckIcon,
-    iconBackground: "bg-green-500",
-    time: "06:00 PM",
-    title: "Primer Vals",
-  },
-  {
-    id: 6,
-    src: "pista-de-baile.webp",
-    content: "Completed interview with",
-    target: "Katherine Snyder",
-    href: "#",
-    date: "Oct 4",
-    datetime: "2020-10-04",
-    icon: CheckIcon,
-    iconBackground: "bg-green-500",
-    time: "06:30 PM",
-    title: "Inicio de la fiesta",
-  },
-  {
-    id: 7,
-    src: "coche.webp",
-    content: "Completed interview with",
-    target: "Katherine Snyder",
-    href: "#",
-    date: "Oct 4",
-    datetime: "2020-10-04",
-    icon: CheckIcon,
-    iconBackground: "bg-green-500",
-    time: "11:00 PM",
-    title: "Fin de la recepción ",
-  },
-];
+import { ref, onMounted, nextTick } from 'vue'
+import config from '~/wedding.config'
+
+const lineHeight = ref(0)
+const latestEvent = ref(null)
+
+const timeline = config.texts.timeline.events.map((event, index) => ({
+  id: index,
+  src: config.images.timeline[event.icon],
+  time: event.time,
+  title: event.title,
+}))
+
+onMounted(async () => {
+  await nextTick()
+  if (latestEvent.value && latestEvent.value[0]) {
+    const containerTop = latestEvent.value[0].parentElement.getBoundingClientRect().top
+    const lastEventBottom = latestEvent.value[0].getBoundingClientRect().bottom
+    lineHeight.value = lastEventBottom - containerTop
+  }
+})
 </script>

@@ -5,11 +5,14 @@
     ></countDown>
     <NuxtImg
       alt="HeroImage"
-      src="fotoHero.webp"
+      :src="config.images.hero"
       class="absolute inset-0 w-full h-full object-cover object-center sm:object-[center_25%]"
     />
-    <!-- Gradiente sutil para legibilidad del texto -->
     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none"></div>
     <NamesComponent class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full"></NamesComponent>
   </div>
 </template>
+
+<script setup>
+import config from '~/wedding.config'
+</script>
