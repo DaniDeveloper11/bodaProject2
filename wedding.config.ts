@@ -1,7 +1,7 @@
 export default {
   couple: {
-    name1: 'Novia',
-    name2: 'Novio',
+    name1: 'Joselyn',
+    name2: 'Paul',
     fullName1: 'Nombre completo novia,',
     fullName2: 'Nombre completo novio',
     initials: 'D&D',
