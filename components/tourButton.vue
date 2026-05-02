@@ -21,6 +21,7 @@ const tourMap: Record<string, { key: string; tour: string }> = {
   '/': { key: 'boda_tour_seen', tour: 'home' },
   '/confirm': { key: 'boda_confirm_tour_seen', tour: 'confirm' },
   '/banco': { key: 'boda_banco_tour_seen', tour: 'banco' },
+  '/admin': { key: 'boda_admin_tour_seen', tour: 'admin' },
 }
 
 onMounted(() => {

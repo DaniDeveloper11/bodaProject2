@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-100">
     <!-- Header -->
-    <header class="bg-white shadow">
+    <header data-tour="admin-header" class="bg-white shadow">
       <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div class="md:flex md:items-center md:justify-between">
           <div class="min-w-0 flex-1">
@@ -14,6 +14,7 @@
           </div>
           <div class="mt-4 flex md:ml-4 md:mt-0">
             <NuxtLink
+              data-tour="admin-back"
               to="/"
               class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
             >
@@ -59,19 +60,19 @@
       <!-- Data Loaded -->
       <div v-else class="space-y-8">
         <!-- Estadísticas -->
-        <section>
+        <section data-tour="admin-stats">
           <h2 class="text-lg font-medium text-gray-900 mb-4">Estadísticas Generales</h2>
           <AdminStatsCards :stats="stats" />
         </section>
 
         <!-- Gráficos -->
-        <section>
+        <section data-tour="admin-charts">
           <h2 class="text-lg font-medium text-gray-900 mb-4">Visualización de Datos</h2>
           <AdminConfirmationChart :stats="stats" />
         </section>
 
         <!-- Filtros -->
-        <section>
+        <section data-tour="admin-filters">
           <h2 class="text-lg font-medium text-gray-900 mb-4">Lista de Invitados</h2>
           <AdminTableFilters
             v-model:search-term="searchTerm"
@@ -84,7 +85,7 @@
         </section>
 
         <!-- Tabla -->
-        <section>
+        <section data-tour="admin-table">
           <AdminGuestsTable :guests="filteredGuests" />
         </section>
 
@@ -116,6 +117,7 @@
 <script setup lang="ts">
 import { onMounted, computed } from 'vue'
 import { ArrowLeftIcon, XCircleIcon, MagnifyingGlassIcon } from '@heroicons/vue/24/outline'
+import { TOURS } from '~/constants/tours'
 
 // Composable de administración
 const {
@@ -131,9 +133,23 @@ const {
   exportToCSV
 } = useGuestAdmin()
 
+// Tour
+const { startTour } = useDriverTour()
+
 // Cargar datos al montar
 onMounted(async () => {
   await fetchGuests()
+
+  const seen = localStorage.getItem('boda_admin_tour_seen') === 'true'
+  if (!seen) {
+    setTimeout(() => {
+      startTour(TOURS.admin, {
+        onDestroyed: () => {
+          localStorage.setItem('boda_admin_tour_seen', 'true')
+        },
+      })
+    }, 800)
+  }
 })
 
 // Última actualización

@@ -212,4 +212,61 @@ export const TOURS: Record<string, DriveStep[]> = {
       },
     },
   ],
+
+  admin: [
+    {
+      element: '[data-tour="admin-header"]',
+      popover: {
+        title: 'Panel de Administración',
+        description: 'Desde aquí puedes gestionar todas las confirmaciones de los invitados a la boda.',
+        side: 'bottom',
+        align: 'center',
+      },
+    },
+    {
+      element: '[data-tour="admin-stats"]',
+      popover: {
+        title: 'Estadísticas Generales',
+        description: 'Un resumen rápido del estado de las confirmaciones: totales, confirmados y pendientes.',
+        side: 'bottom',
+        align: 'center',
+      },
+    },
+    {
+      element: '[data-tour="admin-charts"]',
+      popover: {
+        title: 'Gráficos',
+        description: 'Visualiza los datos de confirmación de forma gráfica para tener una mejor perspectiva.',
+        side: 'bottom',
+        align: 'center',
+      },
+    },
+    {
+      element: '[data-tour="admin-filters"]',
+      popover: {
+        title: 'Filtros',
+        description: 'Filtra la lista de invitados por nombre, estado de confirmación o lado (novio/novia). También puedes exportar a CSV.',
+        side: 'bottom',
+        align: 'center',
+      },
+    },
+    {
+      element: '[data-tour="admin-table"]',
+      popover: {
+        title: 'Tabla de Invitados',
+        description: 'Aquí puedes ver el detalle de cada invitado, su estado de confirmación y acompañantes.',
+        side: 'top',
+        align: 'center',
+      },
+    },
+    {
+      element: '[data-tour="admin-back"]',
+      popover: {
+        title: 'Volver al Sitio',
+        description: 'Usa este botón para regresar a la página principal de la invitación.',
+        side: 'bottom',
+        align: 'center',
+      },
+    },
+  ],
 }
