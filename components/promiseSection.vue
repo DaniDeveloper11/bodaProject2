@@ -4,9 +4,9 @@
             <NuxtImg :src="weddingConfig.images.promise" class=" object-cover"></NuxtImg>
         </div>
         <div class=" w-full my-4">
-            <h2 class="text-3xl sm:text-4xl md:text-5xl text-left font-playfair text-brand-sage my-2">{{ weddingConfig.texts.promise.title }}</h2>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl text-left font-playfair text-brand-cyan my-2">{{ weddingConfig.texts.promise.title }}</h2>
             <div>
-                <p class="lora text-left text-lg mr-14 dark:text-white">{{ weddingConfig.texts.promise.text }}</p>
+                <p class="lora text-left text-lg mr-14 text-brand-charcoal">{{ weddingConfig.texts.promise.text }}</p>
             </div>
             <div class="flex justify-end -mt-28 md:-mt-20 -mr-9">
                 <NuxtImg :src="weddingConfig.images.flowerCorner" class="size-52"></NuxtImg>

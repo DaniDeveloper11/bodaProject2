@@ -1,24 +1,24 @@
 <template>
-    <div class="text-center text-white space-y-2 py-5 px-4 rounded-2xl backdrop-blur-sm bg-black/20">
+    <div class="text-center text-brand-charcoal space-y-2 py-5 px-4 rounded-2xl bg-brand-sky/90 backdrop-blur-sm">
       <h2 class="text-3xl font-bold font-dancing">
         {{ isWeddingTime ? config.texts.countdown.celebration : config.texts.countdown.remaining }}
       </h2>
   
       <div v-if="!isWeddingTime" class="flex justify-center gap-6 text-2xl font-semibold">
         <div>
-          <span class="block text-4xl">{{ countdown.days }}</span>
+          <span class="block text-4xl text-brand-cyan">{{ countdown.days }}</span>
           <span class="font-dancing">{{ config.texts.countdown.days }}</span>
         </div>
         <div>
-          <span class="block text-4xl">{{ countdown.hours }}</span>
+          <span class="block text-4xl text-brand-cyan">{{ countdown.hours }}</span>
           <span class="font-dancing">{{ config.texts.countdown.hours }}</span>
         </div>
         <div>
-          <span class="block text-4xl">{{ countdown.minutes }}</span>
+          <span class="block text-4xl text-brand-cyan">{{ countdown.minutes }}</span>
           <span class="font-dancing">{{ config.texts.countdown.minutes }}</span>
         </div>
         <div>
-          <span class="block text-4xl">{{ countdown.seconds }}</span>
+          <span class="block text-4xl text-brand-cyan">{{ countdown.seconds }}</span>
           <span class="font-dancing">{{ config.texts.countdown.seconds }}</span>
         </div>
       </div>

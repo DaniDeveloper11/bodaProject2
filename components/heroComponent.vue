@@ -8,7 +8,7 @@
       :src="config.images.hero"
       class="absolute  inset-0 w-full h-full object-cover object-[75%_center] sm:object-[center_25%]"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent pointer-events-none"></div>
     <NamesComponent class="absolute bottom-0 left-1/2 -translate-x-1/2 w-full"></NamesComponent>
   </div>
   <div class="sm:hidden flex justify-center py-4">

@@ -2,7 +2,7 @@
   <button
     v-if="visible"
     title="Reiniciar tour"
-    class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-orange-500 text-white shadow-lg flex items-center justify-center text-xl font-bold hover:bg-orange-400 hover:scale-110 transition-all duration-200"
+    class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-brand-cyan text-white shadow-lg flex items-center justify-center text-xl font-bold hover:bg-brand-cyan/90 hover:scale-110 transition-all duration-200"
     @click="startTour"
   >
     ?

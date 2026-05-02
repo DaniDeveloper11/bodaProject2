@@ -1,12 +1,12 @@
 <template>
   <div class="my-10 mx-auto w-full">
-    <h2 class="text-brand-gold font-dancing text-5xl text-center my-8">
+    <h2 class="text-brand-copper font-dancing text-5xl text-center my-8">
       {{ weddingConfig.location.city }}
     </h2>
     <div id="map" class="w-full h-[400px] rounded-2xl shadow" />
     <div class="flex justify-center gap-4 mt-4 w-full">
       <button v-for="(location, index) in locations" :key="index" @click="focusLocation(location)" type="button"
-        class="flex justify-center items-center gap-x-1.5 rounded-md bg-orange-300 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600">
+        class="flex justify-center items-center gap-x-1.5 rounded-md bg-brand-cyan px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-cyan/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan">
 
         <NuxtImg sizes="20" :src="location.icon"></NuxtImg>
         {{ location.name }}
@@ -17,7 +17,7 @@
   <a :href="placeUbication" target="_blank">
     <button
       type="button"
-      class="rounded-full bg-indigo-600 px-4 py-2 text-white shadow hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 flex items-center gap-2"
+      class="rounded-full bg-brand-agave px-4 py-2 text-white shadow hover:bg-brand-agave/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-agave flex items-center gap-2"
     >
       <span class="text-sm font-medium">¿Cómo llegar?</span>
       <ArrowUpRightIcon class="w-6 h-6" aria-hidden="true" />

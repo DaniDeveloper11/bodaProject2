@@ -10,14 +10,14 @@
 
       <div class="-mt-14">
         <div class="mb-5">
-          <h4 class="text-brand-sage font-dancing text-4xl md:text-5xl text-center">
+          <h4 class="text-brand-cyan font-dancing text-4xl md:text-5xl text-center">
             {{ config.texts.timeline.title }}
           </h4>
         </div>
 
         <div class="relative">
           <div
-            class="absolute left-1/2 top-0 h-full w-0.5 bg-brand-rose/60 dark:bg-brand-gold/40 -translate-x-1/2"
+            class="absolute left-1/2 top-0 h-full w-0.5 bg-brand-cyan/30 -translate-x-1/2"
             :style="{ height: lineHeight + 'px' }"
           ></div>
           <ul>
@@ -34,23 +34,23 @@
                 v-if="i % 2 === 0"
               >
                 <div class="text-right">
-                  <div class="text-lg font-semibold text-brand-rose dark:text-brand-gold">
+                  <div class="text-lg font-semibold text-brand-copper">
                     {{ event.time }}
                   </div>
-                  <div class="text-xl font-cursive dark:text-white">{{ event.title }}</div>
+                  <div class="text-xl font-cursive text-brand-charcoal">{{ event.title }}</div>
                 </div>
               </div>
               <div class="relative z-10 flex flex-col items-center">
                 <div
-                  class="bg-white dark:bg-brand-dark border-4 border-brand-rose dark:border-brand-gold/60 rounded-full p-2 shadow-md"
+                  class="bg-white border-4 border-brand-cyan rounded-full p-2 shadow-md"
                 >
                   <NuxtImg
                     :src="event.src"
-                    class="w-10 h-10 sm:w-14 sm:h-14 object-contain dark:brightness-110"
+                    class="w-10 h-10 sm:w-14 sm:h-14 object-contain"
                   ></NuxtImg>
                 </div>
                 <div
-                  class="w-3 h-3 bg-white dark:bg-brand-gold border-4 border-brand-rose dark:border-brand-gold rounded-full mt-2"
+                  class="w-3 h-3 bg-brand-cyan border-4 border-brand-cyan rounded-full mt-2"
                 ></div>
               </div>
               <div
@@ -58,10 +58,10 @@
                 v-if="i % 2 !== 0"
               >
                 <div class="text-left">
-                  <div class="text-lg font-semibold text-brand-rose dark:text-brand-gold">
+                  <div class="text-lg font-semibold text-brand-copper">
                     {{ event.time }}
                   </div>
-                  <div class="text-xl font-cursive dark:text-white">{{ event.title }}</div>
+                  <div class="text-xl font-cursive text-brand-charcoal">{{ event.title }}</div>
                 </div>
               </div>
             </li>

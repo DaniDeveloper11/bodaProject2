@@ -28,7 +28,7 @@
                   <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">{{ person.name }}</td>
 
                   <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
+                    <a href="#" class="text-brand-cyan hover:text-brand-cyan/80"
                       >Edit<span class="sr-only">, {{ person.name }}</span></a
                     >
                   </td>

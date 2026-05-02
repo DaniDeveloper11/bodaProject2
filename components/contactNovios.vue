@@ -5,7 +5,7 @@
                 <NuxtImg :src="weddingConfig.images.flowerCorner" class="-scale-y-100 size-40 md:size-60"></NuxtImg>
             </div>
             <div class="flex flex-col  justify-center my-10">
-                <h2 class="text-2xl font-dancing text-gray-800 mb-4 md:text-4xl dark:text-white">{{ weddingConfig.texts.contact.title }}</h2>
+                <h2 class="text-2xl font-dancing text-brand-charcoal mb-4 md:text-4xl">{{ weddingConfig.texts.contact.title }}</h2>
                 <div class="flex flex-col w-full gap-6 mx-auto max-w-2xl my-8">
                     <a class="relative flex gap-4 justify-center bg-green-500 text-white font-bold py-3 px-6 rounded-lg shadow hover:bg-green-600 transition duration-300"
                         :href="groomWhatsappLink">

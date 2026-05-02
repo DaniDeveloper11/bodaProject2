@@ -54,10 +54,6 @@ const images = weddingConfig.images.carousel
 </template>
 
 <style>
-:root {
-  background-color: #242424;
-}
-
 .carousel {
   --vc-nav-background: rgba(255, 255, 255, 0.7);
   --vc-nav-border-radius: 100%;

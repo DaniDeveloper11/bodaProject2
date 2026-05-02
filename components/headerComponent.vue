@@ -13,13 +13,13 @@
       </div>
       <div class="flex flex-1 items-center justify-end gap-x-6">
         <a :href="weddingConfig.gifts.liverpoolUrl"
-          class="flex gap-1 rounded-md bg-violet-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+          class="flex gap-1 rounded-md bg-brand-cyan px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-cyan/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan">
           <GiftIcon class="h-5"></GiftIcon>
           {{ weddingConfig.texts.nav.giftRegistry }}
         </a>
       </div>
       <div class="flex lg:hidden">
-        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700 dark:text-white"
+        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           @click="mobileMenuOpen = true">
           <span class="sr-only">Open main menu</span>
           <Bars3Icon class="size-7" aria-hidden="true" />
@@ -37,7 +37,7 @@
 
           </a>
           <a :href="weddingConfig.gifts.liverpoolUrl"
-            class="flex gap-2 ml-auto rounded-md bg-violet-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-violet-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-violet-600">
+            class="flex gap-2 ml-auto rounded-md bg-brand-cyan px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-cyan/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan">
             <GiftIcon class="h-5"></GiftIcon>
 
             {{ weddingConfig.texts.nav.giftRegistry }}
@@ -48,7 +48,7 @@
           </button>
         </div>
         <div class="mt-6 flow-root">
-          <div class="-my-6  divide-gray-500/10">
+          <div class="-my-6  divide-brand-sand/30">
             <div class="space-y-2 py-6">
               <a v-for="item in navigation" :key="item.name" :href="item.href"
                 class="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
