@@ -15,12 +15,14 @@ export default {
       },
       colors: {
         brand: {
-          sage:  '#6a8e58',
-          cream: '#f5f0e8',
-          blush: '#e8c9b8',
-          gold:  '#d3924a',
-          dark:  '#1d1f21',
-          rose:  '#bba9a0',
+          cyan:         '#0E7490',
+          'cyan-light': '#A5F3FC',
+          sky:          '#E0F7FA',
+          cream:        '#FDFCF8',
+          agave:        '#2D6A5A',
+          copper:       '#B87333',
+          charcoal:     '#1E293B',
+          sand:         '#F5F0E1',
         }
       },
       fontFamily: {

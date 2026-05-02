@@ -3,22 +3,33 @@
     v-if="visible"
     title="Reiniciar tour"
     class="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-brand-cyan text-white shadow-lg flex items-center justify-center text-xl font-bold hover:bg-brand-cyan/90 hover:scale-110 transition-all duration-200"
-    @click="startTour"
+    @click="replay"
   >
     ?
   </button>
 </template>
 
 <script setup lang="ts">
-const { startTour, hasSeenTour } = useTour()
+import { TOURS } from '~/constants/tours'
+
+const { startTour } = useDriverTour()
+const route = useRoute()
 
 const visible = ref(false)
 
+const tourMap: Record<string, { key: string; tour: string }> = {
+  '/': { key: 'boda_tour_seen', tour: 'home' },
+  '/confirm': { key: 'boda_confirm_tour_seen', tour: 'confirm' },
+  '/banco': { key: 'boda_banco_tour_seen', tour: 'banco' },
+}
+
 onMounted(() => {
-  visible.value = hasSeenTour()
+  const entry = tourMap[route.path] ?? tourMap['/']
+  visible.value = localStorage.getItem(entry.key) === 'true'
 })
 
-// Expose method so app.vue can update visibility after tour completes
-const show = () => { visible.value = true }
-defineExpose({ show })
+const replay = () => {
+  const entry = tourMap[route.path] ?? tourMap['/']
+  startTour(TOURS[entry.tour])
+}
 </script>

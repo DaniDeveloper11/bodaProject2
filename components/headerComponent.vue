@@ -89,9 +89,9 @@ const brideWhatsappLink = `https://wa.me/${weddingConfig.contact.bride.phoneRaw}
 const groomWhatsappLink = `https://wa.me/${weddingConfig.contact.groom.phoneRaw}?text=${encodeURIComponent(weddingConfig.contact.groom.whatsappMessage)}`
 
 const navigation = [
-  { name: weddingConfig.texts.nav.requestInfo, href: '#informacion' },
-  { name: weddingConfig.texts.nav.location, href: '#ubicacion' },
-  { name: weddingConfig.texts.nav.dressCode, href: '#dressCode' },
+  { name: weddingConfig.texts.nav.requestInfo, href: '/#informacion' },
+  { name: weddingConfig.texts.nav.location, href: '/#ubicacion' },
+  { name: weddingConfig.texts.nav.dressCode, href: '/#dressCode' },
   { name: weddingConfig.texts.nav.confirmAttendance, href: '#confirmacion' },
 ]
 

@@ -9,16 +9,19 @@
 
         <!-- Botón Back to Top -->
         <button v-if="showButton" @click="scrollToTop"
-          class="fixed bottom-6 right-6 z-50 bg-brand-sage/90 text-white w-11 h-11 rounded-full shadow-xl hover:bg-brand-sage transition-all duration-300 backdrop-blur-sm flex items-center justify-center text-lg font-semibold">
+          class="fixed bottom-6 right-6 z-50 bg-brand-cyan/90 text-white w-11 h-11 rounded-full shadow-xl hover:bg-brand-cyan transition-all duration-300 backdrop-blur-sm flex items-center justify-center text-lg font-semibold">
           ↑
         </button>
 
 
       </div>
     </main>
-  <footer class="border-t border-gray-200 dark:border-white/10 mt-8">
-    <div class="mx-auto max-w-7xl px-6 py-8 flex items-center justify-center lg:px-8">
-      <p class="text-center text-sm text-gray-500 dark:text-gray-400 font-poppins">{{ weddingConfig.texts.footer }}</p>
+  <footer class="border-t border-brand-sand mt-8">
+    <div class="mx-auto max-w-7xl px-6 py-8 flex items-center justify-center gap-2 lg:px-8">
+      <svg viewBox="0 0 32 48" class="w-4 h-6 opacity-40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16 48 Q12 32 8 22 Q4 14 0 8 Q6 10 10 4 Q14 0 16 0 Q18 0 22 4 Q26 10 32 8 Q28 14 24 22 Q20 32 16 48Z" fill="#2D6A5A"/>
+      </svg>
+      <p class="text-center text-sm text-brand-charcoal/60 font-poppins">{{ weddingConfig.texts.footer }}</p>
     </div>
   </footer>
 

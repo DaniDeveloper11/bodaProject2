@@ -5,7 +5,7 @@ export default {
     fullName1: 'Nombre completo novia,',
     fullName2: 'Nombre completo novio',
     initials: 'D&D',
-    logo: '/logoDDr.webp',
+    logo: '/logo.webp',
     namesFont: "'Alex Brush', cursive",
     parentNames1: {
       father: 'Nombre apellido Padre',
@@ -69,8 +69,9 @@ export default {
   images: {
     hero: '/fotoHero.webp',
     promise: '/foto2.webp',
-    timelineBottom: '/foto3.webp',
+    timelineBottom: '/timeLine.webp',
     flowerCorner: '/flowerCorner.webp',
+    simpleFlower: '/simpleFlower.webp',
     decorativeT: '/t.webp',
     disenoFloral1: '/diseno-floral.webp',
     disenoFloral2: '/diseno-floral-2.webp',
@@ -205,7 +206,7 @@ export default {
       dressCode: 'Codigo de Vestimenta',
       confirmAttendance: 'Confirma Asistencia',
     },
-    footer: '© 2025 Realizado por el Novio.',
+    footer: '© 2025 Realizado por Masolutions.',
     modal: {
       title: '¿Estás seguro?',
       message: 'Esta acción no se puede deshacer.',
