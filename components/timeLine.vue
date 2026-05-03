@@ -3,7 +3,7 @@
     <div class="relative">
       <div class="flex justify-items-start -ml-6">
         <NuxtImg
-        :src="config.images.flowerCorner"
+        :src="flowerCornerImage"
         class="size-48 -scale-y-100 -scale-x-100"
       ></NuxtImg>
       </div>
@@ -11,7 +11,7 @@
       <div class="-mt-14">
         <div class="mb-5">
           <h4 class="text-brand-cyan font-dancing text-4xl md:text-5xl text-center">
-            {{ config.texts.timeline.title }}
+            {{ timelineTitle }}
           </h4>
         </div>
 
@@ -70,30 +70,50 @@
       </div>
     </div>
     <div class="w-full flex justify-center items-center">
-      <NuxtImg :src="config.images.timelineBottom" class="w-full h-full object-cover"></NuxtImg>
+      <NuxtImg :src="timelineBottomImage" class="w-full h-full object-cover"></NuxtImg>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from 'vue'
-import config from '~/wedding.config'
+import { ref, onMounted, nextTick, computed, watchEffect } from 'vue'
+import { useWeddingConfigStore } from '~/stores/weddingConfig'
+
+const configStore = useWeddingConfigStore()
 
 const lineHeight = ref(0)
 const latestEvent = ref(null)
 
-const timeline = config.texts.timeline.events.map((event, index) => ({
-  id: index,
-  src: config.images.timeline[event.icon],
-  time: event.time,
-  title: event.title,
-}))
+const timelineTitle = computed(() => configStore.config?.texts?.timeline?.title ?? '')
+const timelineEvents = computed(() => configStore.config?.texts?.timeline?.events ?? [])
+const timelineImages = computed(() => configStore.config?.images?.timeline ?? {})
+const flowerCornerImage = computed(() => configStore.config?.images?.flowerCorner ?? '')
+const timelineBottomImage = computed(() => configStore.config?.images?.timelineBottom ?? '')
 
-onMounted(async () => {
+const timeline = computed(() => 
+  timelineEvents.value.map((event, index) => ({
+    id: index,
+    src: timelineImages.value[event.icon] ?? '',
+    time: event.time,
+    title: event.title,
+  }))
+)
+
+watchEffect(() => {
+  if (timeline.value.length > 0) {
+    nextTick(() => calculateLineHeight())
+  }
+})
+
+async function calculateLineHeight() {
   await nextTick()
   if (latestEvent.value && latestEvent.value[0]) {
     const containerTop = latestEvent.value[0].parentElement.getBoundingClientRect().top
     const lastEventBottom = latestEvent.value[0].getBoundingClientRect().bottom
     lineHeight.value = lastEventBottom - containerTop
   }
+}
+
+onMounted(async () => {
+  await calculateLineHeight()
 })
 </script>
