@@ -152,6 +152,7 @@ export default {
       nameLabel: 'Nombre',
       confirmedLabel: 'confirmado',
       submitButton: 'Confirmar Asistencia',
+      adultsOnlyEnabled: false,
       adultsOnly: 'Celebración exclusiva para ADULTOS.',
       adultsOnlyLink: 'https://www.tiktok.com/@gabylajarochita.83/video/7316280366153633030?is_from_webapp=1&lw_scan=1&shortcut_feature=feed',
       footer: 'Para más información, contacta a los novios.',

@@ -142,6 +142,7 @@ export interface WeddingTexts {
     nameLabel: string
     confirmedLabel: string
     submitButton: string
+    adultsOnlyEnabled: boolean
     adultsOnly: string
     adultsOnlyLink: string
     footer: string

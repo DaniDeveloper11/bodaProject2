@@ -89,7 +89,7 @@
         </div>
 
         <!-- Aviso adultos -->
-        <div data-tour="confirm-adults" class="mt-8 rounded-2xl border border-red-200 bg-red-50/60 px-5 py-4 max-w-lg">
+         <div v-if="confirmPageData?.adultsOnlyEnabled" id="only-adults-alert" data-tour="confirm-adults" class="mt-8 rounded-2xl border border-red-200 bg-red-50/60 px-5 py-4 max-w-lg">
             <p class="text-brand-charcoal text-base font-semibold">
                 {{ confirmPageData?.adultsOnly }}
             </p>

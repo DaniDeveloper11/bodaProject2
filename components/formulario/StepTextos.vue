@@ -76,15 +76,18 @@
     <!-- Confirmacion -->
     <div class="bg-brand-sand/30 rounded-xl p-4 space-y-3">
       <h3 class="text-sm font-semibold text-brand-charcoal/80">Pagina de Confirmacion</h3>
-      <div>
-        <label class="form-label">Mensaje para familias</label>
-        <textarea v-model="form.texts.confirmPage.familyMessage" rows="2" class="form-input" />
+      <div class="flex items-center gap-3">
+        <input 
+          id="adults-only-checkbox"
+          v-model="form.texts.confirmPage.adultsOnlyEnabled"
+          type="checkbox"
+          class="w-4 h-4 rounded border-brand-charcoal/30 text-brand-cyan focus:ring-brand-cyan"
+        />
+        <label for="adults-only-checkbox" class="text-sm text-brand-charcoal/80 cursor-pointer">
+          Solo para adultos (no se permiten niños)
+        </label>
       </div>
-      <div>
-        <label class="form-label">Mensaje para acompanantes</label>
-        <textarea v-model="form.texts.confirmPage.companionMessage" rows="2" class="form-input" />
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div v-if="form.texts.confirmPage.adultsOnlyEnabled" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
         <div>
           <label class="form-label">Aviso adultos</label>
           <input v-model="form.texts.confirmPage.adultsOnly" type="text" class="form-input" />
@@ -94,7 +97,15 @@
           <input v-model="form.texts.confirmPage.adultsOnlyLink" type="url" class="form-input" />
         </div>
       </div>
-    </div>
+      <div>
+        <label class="form-label">Mensaje para familias</label>
+        <textarea v-model="form.texts.confirmPage.familyMessage" rows="2" class="form-input" />
+      </div>
+      <div>
+        <label class="form-label">Mensaje para acompanantes</label>
+        <textarea v-model="form.texts.confirmPage.companionMessage" rows="2" class="form-input" />
+      </div>
+    </div> 
 
     <!-- Footer -->
     <div>

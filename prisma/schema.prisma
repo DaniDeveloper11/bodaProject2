@@ -33,6 +33,14 @@ model Companion {
   guest     Guest   @relation(fields: [guestId], references: [id])
 }
 
+model WeddingConfig {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  data      Json
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 enum GuestSide {
   NOVIO
   NOVIA
