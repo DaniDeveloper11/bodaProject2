@@ -1,10 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import 'vue3-carousel/carousel.css'
 import { Carousel, Slide, Navigation } from 'vue3-carousel'
-import { ref } from 'vue'
-import weddingConfig from '~/wedding.config'
+import { ref, watchEffect } from 'vue'
+import { useWeddingConfigStore } from '~/stores/weddingConfig'
 
+const configStore = useWeddingConfigStore()
 const currentSlide = ref(0)
+const images = ref<string[]>([])
 
 const slideTo = (nextSlide) => (currentSlide.value = nextSlide)
 
@@ -25,7 +27,10 @@ const thumbnailsConfig = {
   gap: 10,
 }
 
-const images = weddingConfig.images.carousel
+watchEffect(() => {
+  const carousel = configStore.config?.images?.carousel
+  images.value = Array.isArray(carousel) ? carousel : []
+})
 </script>
 
 <template>

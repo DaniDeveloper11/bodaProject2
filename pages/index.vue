@@ -25,10 +25,14 @@
 
 <script setup>
 import { TOURS } from '~/constants/tours'
+import { useWeddingConfigStore } from '~/stores/weddingConfig'
 
 const { startTour } = useDriverTour()
+const configStore = useWeddingConfigStore()
 
-onMounted(() => {
+onMounted(async () => {
+  await configStore.fetchConfig()
+
   const seen = localStorage.getItem('boda_tour_seen') === 'true'
   if (!seen) {
     setTimeout(() => {
