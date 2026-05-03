@@ -1,7 +1,7 @@
 <template>
   <div class="my-10 mx-auto w-full">
     <h2 class="text-brand-copper font-dancing text-5xl text-center my-8">
-      {{ weddingConfig.location.city }}
+      {{ cityName }}
     </h2>
     <div id="map" class="w-full h-[400px] rounded-2xl shadow" />
     <div class="flex justify-center gap-4 mt-4 w-full">
@@ -30,34 +30,42 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, watchEffect } from "vue";
 import { ArrowUpRightIcon } from "@heroicons/vue/20/solid";
-import weddingConfig from '~/wedding.config'
+import { useWeddingConfigStore } from '~/stores/weddingConfig'
 
+const configStore = useWeddingConfigStore()
 const place = ref("");
 const placeUbication = ref("");
 const runtimeConfig = useRuntimeConfig();
 
-const locations = [
-  {
-    name: weddingConfig.location.church.name,
-    position: weddingConfig.location.church.position,
-    icon: weddingConfig.location.church.icon,
-    place: weddingConfig.location.church.fullName,
-    howtoarrive: weddingConfig.location.church.mapsUrl,
-    markerIcon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
-  },
-  {
-    name: weddingConfig.location.reception.name,
-    position: weddingConfig.location.reception.position,
-    icon: weddingConfig.location.reception.icon,
-    place: weddingConfig.location.reception.fullName,
-    howtoarrive: weddingConfig.location.reception.mapsUrl,
-    markerIcon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-  },
-];
+const locationData = computed(() => configStore.config?.location)
+const cityName = computed(() => locationData.value?.city ?? '')
 
-let map: google.maps.Map;
+const locations = computed(() => {
+  const loc = locationData.value
+  if (!loc) return []
+  return [
+    {
+      name: loc.church.name,
+      position: loc.church.position,
+      icon: loc.church.icon,
+      place: loc.church.fullName,
+      howtoarrive: loc.church.mapsUrl,
+      markerIcon: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
+    },
+    {
+      name: loc.reception.name,
+      position: loc.reception.position,
+      icon: loc.reception.icon,
+      place: loc.reception.fullName,
+      howtoarrive: loc.reception.mapsUrl,
+      markerIcon: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+    },
+  ]
+})
+
+let map: google.maps.Map | null = null;
 
 function loadGoogleMapsScript(): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -77,35 +85,56 @@ function loadGoogleMapsScript(): Promise<void> {
   });
 }
 
-function focusLocation(location: (typeof locations)[0]) {
+function focusLocation(location: (typeof locations.value)[0]) {
   place.value = location.place;
   placeUbication.value = location.howtoarrive;
-  map.setCenter(location.position);
-  map.setZoom(16);
+  if (map) {
+    map.setCenter(location.position);
+    map.setZoom(16);
+  }
 }
 
-onMounted(async () => {
-  await loadGoogleMapsScript();
+function initMap() {
+  const el = document.getElementById("map")
+  if (!el || !window.google?.maps) return
 
-  const el = document.getElementById("map");
-  if (!el) return;
+  const loc = locationData.value
+  if (!loc) return
 
-  const centerLocation = weddingConfig.location.mapCenter === 'church'
-    ? weddingConfig.location.church.position
-    : weddingConfig.location.reception.position
+  const centerLocation = loc.mapCenter === 'church'
+    ? loc.church.position
+    : loc.reception.position
 
-  map = new google.maps.Map(el, {
-    center: centerLocation,
-    zoom: weddingConfig.location.mapZoom,
-  });
+  if (map) {
+    map.setCenter(centerLocation)
+    map.setZoom(loc.mapZoom ?? 14)
+    map.clearMarkers?.()
+  } else {
+    map = new google.maps.Map(el, {
+      center: centerLocation,
+      zoom: loc.mapZoom ?? 14,
+    })
+  }
 
-  locations.forEach((loc) => {
+  locations.value.forEach((locItem) => {
     new google.maps.Marker({
-      position: loc.position,
+      position: locItem.position,
       map,
-      title: loc.name,
-      icon: loc.markerIcon,
-    });
-  });
-});
+      title: locItem.name,
+      icon: locItem.markerIcon,
+    })
+  })
+}
+
+watchEffect(async () => {
+  const loc = locationData.value
+  if (!loc) return
+  
+  try {
+    await loadGoogleMapsScript()
+    initMap()
+  } catch (e) {
+    console.error('Map initialization failed:', e)
+  }
+})
 </script>
