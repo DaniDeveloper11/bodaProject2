@@ -5,7 +5,7 @@
       <div class="flex px-4 py-5 sm:px-6 gap-3 items-center justify-center">
         <NuxtIcon name="my-icon:agave-rosette" class="text-brand-copper size-8" />
         <h2 class="text-brand-cyan font-dancing text-5xl md:text-6xl text-center">
-          {{ config.texts.saveDate }}</h2>
+          {{ saveDateText }}</h2>
         <NuxtIcon name="my-icon:agave-rosette" class="text-brand-copper size-8" />
       </div>
       <div class="px-4 py-5 sm:p-6">
@@ -14,6 +14,9 @@
     </div>
   </template>
 
-<script setup>
-import config from '~/wedding.config'
+<script setup lang="ts">
+import { useWeddingConfigStore } from '~/stores/weddingConfig'
+
+const configStore = useWeddingConfigStore()
+const saveDateText = computed(() => configStore.config?.texts?.saveDate ?? '')
 </script>
