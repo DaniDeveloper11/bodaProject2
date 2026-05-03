@@ -10,5 +10,5 @@
 </template>
 
 <script setup>
-import config from '~/wedding.config'
+const config = useWeddingConfig()
 </script>
