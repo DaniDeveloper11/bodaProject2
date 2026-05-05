@@ -4,7 +4,7 @@
       <div class="flex lg:flex-1">
         <a href="#" class="-m-3 -p-3">
           <span class="sr-only">{{ weddingConfig.couple.initials }}</span>
-          <NuxtImg sizes="60" :src="weddingConfig.couple.logo"></NuxtImg>
+          <NuxtImg sizes="100" :src="weddingConfig.couple.logo"></NuxtImg>
         </a>
       </div>
       <div class="hidden lg:flex lg:gap-x-12 bg-white rounded-2xl px-4 py-1">
