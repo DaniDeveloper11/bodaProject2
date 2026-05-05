@@ -17,11 +17,11 @@ export default {
     },
   },
   date: {
-    weddingDate: '2026-10-04T13:00:00',
-    displayDate: '04/10/2026',
+    weddingDate: '2026-05-30T13:00:00',
+    displayDate: '30/05/2026',
     calendarMonthYear: 'Octubre 2026',
-    rsvpDeadline: '31 de Agosto del 2025',
-    calendarSelectedDate: '2026-10-04',
+    rsvpDeadline: '30 de Mayo del 2025',
+    calendarSelectedDate: '2026-05-30',
   },
   location: {
     city: 'Etzatlan Jalisco',
