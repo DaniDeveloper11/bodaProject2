@@ -1,36 +1,41 @@
 <template>
     <div class="text-center text-brand-charcoal space-y-2 py-5 px-4 rounded-2xl bg-brand-sky/90 backdrop-blur-sm">
       <h2 class="text-3xl font-bold font-dancing">
-        {{ isWeddingTime ? config.texts.countdown.celebration : config.texts.countdown.remaining }}
+        {{ isWeddingTime ? countdownTexts.celebration : countdownTexts.remaining }}
       </h2>
-  
+
       <div v-if="!isWeddingTime" class="flex justify-center gap-6 text-2xl font-semibold">
         <div>
           <span class="block text-4xl text-brand-cyan">{{ countdown.days }}</span>
-          <span class="font-dancing">{{ config.texts.countdown.days }}</span>
+          <span class="font-dancing">{{ countdownTexts.days }}</span>
         </div>
         <div>
           <span class="block text-4xl text-brand-cyan">{{ countdown.hours }}</span>
-          <span class="font-dancing">{{ config.texts.countdown.hours }}</span>
+          <span class="font-dancing">{{ countdownTexts.hours }}</span>
         </div>
         <div>
           <span class="block text-4xl text-brand-cyan">{{ countdown.minutes }}</span>
-          <span class="font-dancing">{{ config.texts.countdown.minutes }}</span>
+          <span class="font-dancing">{{ countdownTexts.minutes }}</span>
         </div>
         <div>
           <span class="block text-4xl text-brand-cyan">{{ countdown.seconds }}</span>
-          <span class="font-dancing">{{ config.texts.countdown.seconds }}</span>
+          <span class="font-dancing">{{ countdownTexts.seconds }}</span>
         </div>
       </div>
     </div>
   </template>
   
   <script setup lang="ts">
-  import { ref, onMounted, onUnmounted } from 'vue'
+  import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
   import config from '~/wedding.config'
+  import { useWeddingConfigStore } from '~/stores/weddingConfig'
+
+  const configStore = useWeddingConfigStore()
+  const weddingDateStr = computed(() => configStore.config?.date?.weddingDate ?? config.date.weddingDate)
+  const weddingDate = computed(() => new Date(weddingDateStr.value))
   
-  const weddingDate = new Date(config.date.weddingDate)
-  
+  const countdownTexts = computed(() => configStore.config?.texts?.countdown ?? config.texts.countdown)
+
   const countdown = ref({
     days: '00',
     hours: '00',
@@ -43,7 +48,7 @@
   
   const updateCountdown = () => {
     const now = new Date()
-    const distance = weddingDate.getTime() - now.getTime()
+    const distance = weddingDate.value.getTime() - now.getTime()
   
     if (distance <= 0) {
       isWeddingTime.value = true
@@ -64,6 +69,13 @@
     }
   }
   
+  watch(weddingDateStr, () => {
+    isWeddingTime.value = false
+    clearInterval(intervalId)
+    updateCountdown()
+    intervalId = setInterval(updateCountdown, 1000)
+  })
+
   onMounted(() => {
     updateCountdown()
     intervalId = setInterval(updateCountdown, 1000)

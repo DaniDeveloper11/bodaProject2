@@ -1,17 +1,17 @@
 <template>
   <div class="lg:flex lg:h-full lg:flex-col">
     <div class="px-4 sm:px-6">
-      <h2 class="text-brand-cyan font-dancing text-3xl text-center">{{ config.date.displayDate }}</h2>
+      <h2 class="text-brand-cyan font-dancing text-3xl text-center">{{ displayDate }}</h2>
     </div>
     <header class="flex justify-center border-b border-gray-200 px-6 pb-4 pt-2 lg:flex-none">
       <h1 class="text-base font-semibold text-brand-charcoal">
-        <time :datetime="calendarDatetime" class="text-xl font-lora">{{ config.date.calendarMonthYear }}</time>
+        <time :datetime="calendarDatetime" class="text-xl font-lora">{{ calendarMonthYear }}</time>
       </h1>
     </header>
     <div class="shadow ring-1 ring-black/5 lg:flex lg:flex-auto lg:flex-col">
       <div
         class="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs/6 font-semibold text-gray-700 lg:flex-none">
-        <div v-for="(name, i) in config.texts.calendar.dayNames" :key="i" class="bg-white py-2">
+        <div v-for="(name, i) in dayNames" :key="i" class="bg-white py-2">
           {{ name.charAt(0) }}<span class="sr-only sm:not-sr-only">{{ name.slice(1) }}</span>
         </div>
       </div>
@@ -29,7 +29,7 @@
               <li>
                 <a href="" class="group flex">
                   <p class="flex-auto truncate font-dancing text-gray-900 text-center">
-                    {{ config.texts.calendar.selectedDayLabel }}
+                    {{ selectedDayLabel }}
                   </p>
                   <heartIcon v-if="day.isSelected" />
                 </a>
@@ -76,19 +76,28 @@
 import heartIcon from "~/ui/icons/heartIcon.vue";
 import { computed } from "vue";
 import config from '~/wedding.config'
+import { useWeddingConfigStore } from '~/stores/weddingConfig'
 
-const weddingDate = new Date(config.date.weddingDate)
-const weddingYear = weddingDate.getFullYear()
-const weddingMonth = weddingDate.getMonth()
-const weddingDay = weddingDate.getDate()
+const configStore = useWeddingConfigStore()
 
-const calendarDatetime = `${weddingYear}-${String(weddingMonth + 1).padStart(2, '0')}`
+const weddingDateStr = computed(() => configStore.config?.date?.weddingDate ?? config.date.weddingDate)
+const weddingDate = computed(() => new Date(weddingDateStr.value))
+const weddingYear = computed(() => weddingDate.value.getFullYear())
+const weddingMonth = computed(() => weddingDate.value.getMonth())
+const weddingDay = computed(() => weddingDate.value.getDate())
+
+const displayDate = computed(() => configStore.config?.date?.displayDate ?? config.date.displayDate)
+const calendarMonthYear = computed(() => configStore.config?.date?.calendarMonthYear ?? config.date.calendarMonthYear)
+const selectedDayLabel = computed(() => configStore.config?.texts?.calendar?.selectedDayLabel ?? config.texts.calendar.selectedDayLabel)
+const dayNames = computed(() => configStore.config?.texts?.calendar?.dayNames ?? config.texts.calendar.dayNames)
+
+const calendarDatetime = computed(() => `${weddingYear.value}-${String(weddingMonth.value + 1).padStart(2, '0')}`)
 
 function formatDay(dateStr) {
   return parseInt(dateStr.split('-').pop(), 10)
 }
 
-function generateCalendarDays(year, month, selectedDayNum) {
+function generateCalendarDays(year, month, selectedDayNum, label) {
   const firstDay = new Date(year, month, 1)
   const lastDay = new Date(year, month + 1, 0)
   const startDow = firstDay.getDay()
@@ -123,7 +132,7 @@ function generateCalendarDays(year, month, selectedDayNum) {
       isToday,
       isSelected,
       events: isSelected
-        ? [{ id: 1, name: config.texts.calendar.selectedDayLabel, time: '', datetime: dateStr, href: '#' }]
+        ? [{ id: 1, name: label, time: '', datetime: dateStr, href: '#' }]
         : [],
     })
   }
@@ -145,6 +154,6 @@ function generateCalendarDays(year, month, selectedDayNum) {
 }
 
 const days = computed(() =>
-  generateCalendarDays(weddingYear, weddingMonth, weddingDay)
+  generateCalendarDays(weddingYear.value, weddingMonth.value, weddingDay.value, selectedDayLabel.value)
 )
 </script>
