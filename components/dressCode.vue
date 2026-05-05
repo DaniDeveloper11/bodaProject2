@@ -23,7 +23,6 @@
           <ul class="flex gap-3 justify-center mt-3">
             <li class="bg-black size-6 md:size-8 rounded-full border-2 border-white/40 shadow-md ring-1 ring-gray-400/30"></li>
             <li class="bg-red-500 size-6 md:size-8 rounded-full border-2 border-white/40 shadow-md"></li>
-            <li class="bg-brand-cyan-light size-6 md:size-8 rounded-full border-2 border-white/40 shadow-md"></li>
           </ul>
         </div>
         <div class="">
@@ -38,7 +37,6 @@
             {{ dressCodeData?.menRestriction }}
           </p>
           <ul class="flex gap-3 justify-center mt-3">
-            <li class="bg-green-600 size-6 md:size-8 rounded-full border-2 border-white/40 shadow-md"></li>
           </ul>
         </div>
       </div>
