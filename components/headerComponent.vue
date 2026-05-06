@@ -12,11 +12,16 @@
           class="text-sm/6 font-semibold text-gray-900">{{ item.name }}</a>
       </div>
       <div class="flex flex-1 items-center justify-end gap-x-6">
-        <a :href="weddingConfig.gifts.liverpoolUrl"
+        <a v-if="hasGiftRegistry" :href="weddingConfig.gifts.liverpoolUrl"
           class="flex gap-1 rounded-md bg-brand-cyan px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-cyan/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan">
           <GiftIcon class="h-5"></GiftIcon>
           {{ weddingConfig.texts.nav.giftRegistry }}
         </a>
+        <span v-else
+          class="flex gap-1 rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-500 cursor-not-allowed opacity-60">
+          <GiftIcon class="h-5"></GiftIcon>
+          {{ weddingConfig.texts.nav.giftRegistry }}
+        </span>
       </div> 
       <div class="flex lg:hidden">
         <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
@@ -36,12 +41,18 @@
             <NuxtImg sizes="60" :src="weddingConfig.couple.logo"></NuxtImg>
 
           </a>
-            <a :href="weddingConfig.gifts.liverpoolUrl"
+            <a v-if="hasGiftRegistry" :href="weddingConfig.gifts.liverpoolUrl"
             class="flex gap-2 ml-auto rounded-md bg-brand-cyan px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-cyan/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan">
             <GiftIcon class="h-5"></GiftIcon>
 
             {{ weddingConfig.texts.nav.giftRegistry }}
           </a>
+          <span v-else
+            class="flex gap-2 ml-auto rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-500 cursor-not-allowed opacity-60">
+            <GiftIcon class="h-5"></GiftIcon>
+
+            {{ weddingConfig.texts.nav.giftRegistry }}
+          </span>
           <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
             <span class="sr-only">Close menu</span>
             <XMarkIcon class="size-6" aria-hidden="true" />
@@ -96,6 +107,7 @@ const navigation = [
 ]
 
 const mobileMenuOpen = ref(false)
+const hasGiftRegistry = computed(() => !!weddingConfig.gifts?.liverpoolUrl)
 </script>
 <style>
 .nuxt-icon svg {

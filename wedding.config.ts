@@ -63,8 +63,8 @@ export default {
     concept: 'Regalo de bodas',
   },
   gifts: {
-    liverpoolUrl: 'https://mesaderegalos.liverpool.com.mx/milistaderegalos/51992607',
-    liverpoolUrlAlt: 'https://mesaderegalos.liverpool.com.mx/milistaderegalos/51605729',
+    liverpoolUrl: '',
+    liverpoolUrlAlt: '',
   },
   images: {
     hero: '/fotoHero.webp',
