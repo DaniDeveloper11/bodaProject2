@@ -11,13 +11,13 @@
         <a v-for="item in navigation" :key="item.name" :href="item.href"
           class="text-sm/6 font-semibold text-gray-900">{{ item.name }}</a>
       </div>
-      <div class="flex flex-1 items-center justify-end gap-x-6">
+    <!--   <div class="flex flex-1 items-center justify-end gap-x-6">
         <a :href="weddingConfig.gifts.liverpoolUrl"
           class="flex gap-1 rounded-md bg-brand-cyan px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-cyan/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan">
           <GiftIcon class="h-5"></GiftIcon>
           {{ weddingConfig.texts.nav.giftRegistry }}
         </a>
-      </div>
+      </div> -->
       <div class="flex lg:hidden">
         <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           @click="mobileMenuOpen = true">
