@@ -36,12 +36,12 @@
             <NuxtImg sizes="60" :src="weddingConfig.couple.logo"></NuxtImg>
 
           </a>
-          <a :href="weddingConfig.gifts.liverpoolUrl"
+           <!-- <a :href="weddingConfig.gifts.liverpoolUrl"
             class="flex gap-2 ml-auto rounded-md bg-brand-cyan px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-brand-cyan/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-cyan">
             <GiftIcon class="h-5"></GiftIcon>
 
             {{ weddingConfig.texts.nav.giftRegistry }}
-          </a>
+          </a>-->
           <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
             <span class="sr-only">Close menu</span>
             <XMarkIcon class="size-6" aria-hidden="true" />
