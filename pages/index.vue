@@ -15,11 +15,11 @@
         <timeLine data-tour="fecha" id="fecha"></timeLine>
         <floralDivider></floralDivider>
         <contactNovios data-tour="informacion" id="informacion"></contactNovios>
-        <floralDivider></floralDivider>
+        <floralDivider class="hidden"></floralDivider>
         <DressCode class="hidden" data-tour="dressCode" id="dressCode"></DressCode>
-        <floralDivider></floralDivider>
-        <mesaRegalos data-tour="mesa-regalos"></mesaRegalos>
-        <confirmComponent data-tour="confirmacion" id="confirmacion"></confirmComponent>
+        <floralDivider class="hidden"></floralDivider>
+        <mesaRegalos class="hidden" data-tour="mesa-regalos"></mesaRegalos>
+        <confirmComponent class="hidden" data-tour="confirmacion" id="confirmacion"></confirmComponent>
     </div>
 </template>
 
