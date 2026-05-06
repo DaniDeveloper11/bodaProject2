@@ -17,13 +17,13 @@
           <p class="text-center text-brand-charcoal font-lora text-xs mt-2 font-medium md:text-md">
             {{ dressCodeData?.womenDescription }}
           </p>
-          <p class="text-center text-brand-cyan font-lora text-xs mt-2 font-medium md:text-sm">
+         <!-- <p class="text-center text-brand-cyan font-lora text-xs mt-2 font-medium md:text-sm">
             {{ dressCodeData?.womenRestriction }}
-          </p>
-          <ul class="flex gap-3 justify-center mt-3">
+          </p> -->
+         <!-- <ul class="flex gap-3 justify-center mt-3">
             <li class="bg-black size-6 md:size-8 rounded-full border-2 border-white/40 shadow-md ring-1 ring-gray-400/30"></li>
             <li class="bg-red-500 size-6 md:size-8 rounded-full border-2 border-white/40 shadow-md"></li>
-          </ul>
+          </ul> -->
         </div>
         <div class="">
           <NuxtImg :src="dressCodeImg" class="rounded-lg shadow-lg object-cover max-w-60 flat " />
