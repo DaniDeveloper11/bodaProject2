@@ -92,7 +92,7 @@ const navigation = [
   { name: weddingConfig.texts.nav.requestInfo, href: '/#informacion' },
   { name: weddingConfig.texts.nav.location, href: '/#ubicacion' },
   { name: weddingConfig.texts.nav.dressCode, href: '/#dressCode' },
-  { name: weddingConfig.texts.nav.confirmAttendance, href: '#confirmacion' },
+ // { name: weddingConfig.texts.nav.confirmAttendance, href: '#confirmacion' },
 ]
 
 const mobileMenuOpen = ref(false)
