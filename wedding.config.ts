@@ -205,7 +205,7 @@ export default {
       requestInfo: 'Solicitar Informacion',
       location: 'Ubicacion',
       dressCode: 'Codigo de Vestimenta',
-      confirmAttendance: 'Confirma Asistencia',
+      confirmAttendance: ' ',
     },
     footer: '© 2025 Realizado por Masolutions.',
     modal: {
