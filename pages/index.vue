@@ -16,7 +16,7 @@
         <floralDivider></floralDivider>
         <contactNovios data-tour="informacion" id="informacion"></contactNovios>
         <floralDivider class="hidden"></floralDivider>
-        <DressCode class="hidden" data-tour="dressCode" id="dressCode"></DressCode>
+        <DressCode class="" data-tour="dressCode" id="dressCode"></DressCode>
         <floralDivider class="hidden"></floralDivider>
         <mesaRegalos class="hidden" data-tour="mesa-regalos"></mesaRegalos>
         <confirmComponent class="hidden" data-tour="confirmacion" id="confirmacion"></confirmComponent>
