@@ -207,7 +207,7 @@ export default {
       dressCode: 'Codigo de Vestimenta',
       confirmAttendance: ' ',
     },
-    footer: '© 2025 Realizado por Masolutions.',
+    footer: '© 2025 By Rousaltiby',
     modal: {
       title: '¿Estás seguro?',
       message: 'Esta acción no se puede deshacer.',
