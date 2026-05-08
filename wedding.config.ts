@@ -47,13 +47,13 @@ export default {
       label: 'Contacta al Novio',
       phone: '+52 3314857062',
       phoneRaw: '5213314857062',
-      whatsappMessage: 'Hola Daniel y Daniela, quería contactarlos por su boda!',
+      whatsappMessage: 'Hola Joselyn y Paul, quería contactarlos por su boda',
     },
     bride: {
       label: 'Contacta a la Novia',
       phone: '+52 3334001701',
       phoneRaw: '5213334001701',
-      whatsappMessage: 'Hola Daniel y Daniela, quería contactarlos por su boda!',
+      whatsappMessage: 'Hola Joselyn y Paul, quería contactarlos por su boda!',
     },
   },
   bank: {
